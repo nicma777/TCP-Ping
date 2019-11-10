@@ -20,8 +20,8 @@ public class TCPPing {
 
 	public static void main(String[] args) throws IOException, UnknownHostException, ClassNotFoundException, InterruptedException {
 		
-    	//args = new String[] {"-c", "-bind", "192.168.5.16", "-port", "9900"};
-    	args = new String[] {"-p", "-port", "9900", "-mps", "10", "-size", "2000", "192.168.5.16"};
+    	//args = new String[] {"-c", "-bind", "192.168.5.16", "-port", "30000"};
+    	//args = new String[] {"-p", "-port", "30000", "-mps", "10", "-size", "2000", "Kristijans-MBP"};
 
     	int size = 300, mps = 1, port;
     	String  bind = null;

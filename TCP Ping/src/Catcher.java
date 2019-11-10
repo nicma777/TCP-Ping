@@ -10,14 +10,18 @@ public class Catcher extends Thread {
 
 	String address;
 	int port;
-
+	byte[] bytes;
+	InetAddress ip;
 	
-	public Catcher(String bind, int port) {
+	public Catcher(String bind, int port) throws UnknownHostException {
 		this.port = port;
 		this.address = bind;
+		this.ip = InetAddress.getByName(address);
+		this.bytes = ip.getAddress();
 	}
 	
-	public void run() {
+	public void run() {	
+		
 		try {
 			System.out.println("Hello! I am listening and my name is " + InetAddress.getLocalHost().getHostName() + " If you can not find me by name use: "
 					+ InetAddress.getLocalHost().getHostAddress());
@@ -25,7 +29,7 @@ public class Catcher extends Thread {
 			e1.printStackTrace();
 		}
 		 try (
-	            ServerSocket serverSocket = new ServerSocket(port, 100, InetAddress.getByName(address));	
+	            ServerSocket serverSocket = new ServerSocket(port, 100, InetAddress.getByAddress(InetAddress.getLocalHost().getHostName(), bytes));	
 	         ) {
 			 	while(true) {
 			 		  Socket pitcherSocket = serverSocket.accept();
